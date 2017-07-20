@@ -1,5 +1,5 @@
 {
-  "name": "MEAN CRUD Sample",
+  "name": "MEAN_CRUD_Sample",
   "author": "Arhan Shahid",
   "version": "0.2.0",
   "private": true,
@@ -8,13 +8,13 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "body-parser": "~1.0.0",
-    "ejs": "*",
-    "errorhandler": "~1.0.0",
-    "express": "4.1.1",
-    "method-override": "~1.0.0",
-    "mongoose": "^4.2.6",
-    "morgan": "~1.0.0",
-    "static-favicon": "~1.0.0"
+    "body-parser": "1.17.2",
+    "ejs": "2.5.6",
+    "errorhandler": "~1.5.0",
+    "express": "4.15.3",
+    "method-override": "2.3.9",
+    "mongoose": "4.11.3",
+    "morgan": "1.8.2",
+    "static-favicon": "2.0.0-alpha"
   }
 }

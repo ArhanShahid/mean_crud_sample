@@ -22,14 +22,8 @@ if ('development' == app.get('env')) {
     app.use(errorhandler());
 }
 
-mongoose.connect('localhost/sampledb', function(err, db) {
-    if (err) {
-        console.log("Can not connect to DB");
-        console.log(err);
-    }
-    else {
-        console.log("Connected to DB");
-    }
+mongoose.connect('localhost/mean_crud_sample', function(err, db) {
+    (err) ? console.log("Can not connect to DB") : console.log("Connected to DB")
 });
 
 var Schema   = mongoose.Schema;
