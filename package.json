@@ -1,8 +1,9 @@
 {
-  "name": "MEAN CRUD Examle",
+  "name": "MEAN CRUD Sample",
   "author": "Arhan Shahid",
   "version": "0.2.0",
   "private": true,
+  "description": "Simple end to end CRUD (create, read, update, delete) application using MEAN Stack.",
   "scripts": {
     "start": "node app.js"
   },

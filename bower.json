@@ -1,10 +1,8 @@
 {
-  "name": "Test App",
-  "version": "0.0.0",
-  "authors": [
-    "Arhan Shahid"
-  ],
-  "description": "",
+  "name": "MEAN CRUD Sample",
+  "version": "0.2.0",
+  "author": "Arhan Shahid",
+  "description": "Simple end to end CRUD (create, read, update, delete) application using MEAN Stack.",
   "license": "MIT",
   "dependencies": {
     "angular": "~1.4.5",
