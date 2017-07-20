@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Test App</title>
-
+    <title>MEAN CRUD Sample</title>
     <!-- CSS Libraries -->
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- JavaScript Libraries -->
@@ -10,140 +9,35 @@
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-resource/angular-resource.min.js"></script>
-    <script>
-
-        angular.module('mainApp',['ngResource'])
-                .config(function() {})
-                .controller('appController', ['$scope','$resource',function ($scope,$resource) {
-
-                    $scope.showEdit =false;
-
-                    $scope.name = {
-                        first:null,
-                        last:null
-                    };
-                    $scope.editname = {
-                        _id:null,
-                        first:null,
-                        last:null
-                    };
-                    function getNames(){
-                        var name = $resource('/api/get');
-                        name.get({},function(res){
-
-                            res.$promise.then(function(data){
-                                $scope.list = data.data;
-                            })
-                        });
-                    }
-                    getNames();
-
-                    $scope.save = function(user){
-                        console.log(user);
-
-                        if(user.first && user.last){
-
-                            var name = $resource('/api/register');
-                            name.save({
-                                        f_name: user.first,
-                                        l_name:user.last
-                                    },
-                                    function(res){
-                                        console.log(res);
-                                        $scope.name.first = null;
-                                        $scope.name.last = null;
-                                        getNames();
-                                    });
-
-                        }else{
-                            alert("Invalid Input");
-                        }
-                    };
-                    $scope.enableEdit = function(name){
-
-                        $scope.showEdit =true;
-                        $scope.editname._id = name._id;
-                        $scope.editname.first = name.f_name;
-                        $scope.editname.last = name.l_name;
-
-                    };
-
-                    $scope.edit = function(name){
-                        console.log(name);
-                        if(name.first && name.last && name._id){
-
-                            var user = $resource('/api/update/:id',{id:'@id'});
-                            user.save({
-                                        id:name._id
-                                    },
-                                    {
-                                        f_name: name.first,
-                                        l_name:name.last
-                                    },
-                                    function(res){
-                                        console.log(res);
-                                        $scope.showEdit =false;
-                                        getNames();
-                                    });
-
-                        }else{
-                            alert("Invalid Input");
-                        }
-                    };
-                    $scope.delete = function(name){
-                        var deleteUser = $resource('/api/delete/:id',{id:'@id'});
-                        deleteUser.delete({
-                                    id:name._id
-                                },
-                                function(res){
-                                    console.log(res);
-                                    getNames();
-                                })
-                    }
-                }]);
-    </script>
-
+    <script src="js/app.js"></script>
 </head>
 
-<body ng-app="mainApp" ng-controller="appController">
-
+<body ng-app="app" ng-controller="appController">
 <div class="container-fluid">
-
     <div class="row">
         <div class="col-md-offset-2 col-md-8">
-
-
             <div ng-if="!showEdit">
                 <br/>
                 <br/>
-
-                <input type="text" class="form-control" ng-model="name.first" placeholder="Enter First Name">
+                <input type="text" class="form-control" ng-model="name.first" placeholder="Name...">
                 <br/>
-
-                <input type="text"  class="form-control" ng-model="name.last" placeholder="Enter Last Name">
+                <input type="text" class="form-control" ng-model="name.last" placeholder="Contact...">
                 <br/>
-
                 <input type="button" class="btn btn-default" ng-click="save(name)" value="Save">
-
                 <br/>
                 <br/>
             </div>
             <div ng-if="showEdit">
                 <br/>
                 <br/>
-
                 <input type="text" class="form-control" ng-model="editname.first">
                 <br/>
-
-                <input type="text"  class="form-control" ng-model="editname.last">
+                <input type="text" class="form-control" ng-model="editname.last">
                 <br/>
                 <input type="button" class="btn btn-default" value="update" ng-click="edit(editname)">
-
                 <br/>
                 <br/>
             </div>
-
-
             <table class="table">
                 <tr>
                     <th>ID</th>
@@ -156,10 +50,10 @@
                         {{name._id}}
                     </td>
                     <td>
-                        {{name.f_name}}
+                        {{name.name}}
                     </td>
                     <td>
-                       {{name.l_name}}
+                        {{name.contact}}
                     </td>
                     <td>
                         <input type="button" class="btn btn-info btn-xs" value="edit"
@@ -168,14 +62,9 @@
                         <input type="button" class="btn btn-danger btn-xs" value="delete" ng-click="delete(name)">
                     </td>
                 </tr>
-
-
             </table>
         </div>
     </div>
-
 </div>
-
 </body>
-
 </html>

@@ -29,8 +29,8 @@ mongoose.connect('localhost/mean_crud_sample', function(err, db) {
 var Schema   = mongoose.Schema;
 
 var UserSchema = new Schema ({
-    f_name        : String,
-    l_name        : String
+    name        : String,
+    contact        : String
 });
 
 var UserModel = mongoose.model('user', UserSchema);
@@ -42,8 +42,8 @@ app.post('/api/register', function(req, res){
 
     var user = new  UserModel();
 
-    user.f_name    = req.body.f_name;
-    user.l_name    = req.body.l_name;
+    user.name    = req.body.name;
+    user.contact    = req.body.contact;
 
     user.save(function(err, data){
         if(err){
@@ -67,8 +67,8 @@ app.post('/api/update/:id', function(req, res){
             console.log(err)
         }else{
 
-            data.f_name    = req.body.f_name;
-            data.l_name    = req.body.l_name;
+            data.name    = req.body.name;
+            data.contact    = req.body.contact;
             data.save(function(err, data){
                 if(err){
                     console.log("Operation failed, error in saving new Profile in DB");
