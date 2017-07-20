@@ -1,7 +1,11 @@
 {
-  "name": "MEAN CRUD Sample",
-  "version": "0.0.1",
+  "name": "MEAN CRUD Examle",
+  "author": "Arhan Shahid",
+  "version": "0.2.0",
   "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
   "dependencies": {
     "body-parser": "~1.0.0",
     "ejs": "*",
